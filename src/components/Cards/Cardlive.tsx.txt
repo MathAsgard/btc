@@ -1,0 +1,385 @@
+import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
+import Locked from "../../assets/Icons/Locked";
+import LiveIcon from "../../assets/Icons/LiveIcon";
+import { useDispatch, connect } from "react-redux";
+import contracts from "../../config/constants/contracts";
+import abis from "../../config/constants/abi";
+const Web3 = require("web3");
+const web3 = new Web3(Web3.givenProvider);
+const contractprediction = new web3.eth.Contract(abis.Prediction.MainNet, contracts.Prediction.MainNet);
+
+const CardLive = (props) => {
+  //console.log(props);
+  const [tx, settx] = useState(0);
+  const [totalBets, settotalBets] = useState(0);
+  const [lockedPrice, setlockedPrice] = useState(0);
+  const [totalAmount, settotalAmount] = useState(0);
+  const [closedPrice, setclosedPrice] = useState(0);
+  const [closedPrice2, setclosedPrice2] = useState(0);
+  const [closedPricediff, setclosedPricediff] = useState(0);
+  const [payoutUp, setpayoutUp] = useState(0);
+  const [payoutDown, setpayoutDown] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!web3) {
+      } else {
+        getValues();
+      }
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      if (!web3) {
+      } else {
+        getValues();
+      }
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [props]);
+
+  async function getValues() {
+    try {
+      var tempid;
+      if (Number(props.id) < 0 || props.id == undefined || props.id == "" || !props.id) {
+        tempid = (await Number(contractprediction.methods.currentEpoch().call())) - 1;
+      } else {
+        tempid = props.id;
+      }
+      if (Number(tempid) < 0 || tempid == undefined || tempid == "" || !tempid) return;
+
+      const rounds = await contractprediction.methods.rounds(tempid).call({ from: props.isLoggedin.address });
+      const rounds2 = await contractprediction.methods.rounds(Number(tempid) - 1).call({ from: props.isLoggedin.address });
+
+      if (rounds.bearAmount == 0) {
+        setpayoutUp(0);
+      } else {
+        setpayoutUp(1 + Number(rounds.bullAmount) / Number(rounds.bearAmount));
+      }
+
+      if (rounds.bullAmount == 0) {
+        setpayoutDown(0);
+      } else {
+        setpayoutDown(1 + Number(rounds.bearAmount) / Number(rounds.bullAmount));
+      }
+
+      setclosedPrice2(rounds2.closePrice / 10 ** 8);
+      setclosedPricediff(Math.abs(rounds.closePrice - rounds2.closePrice) / 10 ** 8);
+      setlockedPrice(rounds.lockPrice / 10 ** 8);
+      settotalAmount(rounds.totalAmount / 10 ** 18);
+      setclosedPrice(rounds.closePrice / 10 ** 8);
+      settotalBets(Number(rounds.bullAmount) / 10 ** 18 + Number(rounds.bearAmount) / 10 ** 18);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  /*
+  useEffect(() => {
+    async function getValues2() {
+      try {
+        if (Number(props.id) < 0 || props.id == undefined || props.id == "" || !props.id) return;
+
+        const rounds = await contractprediction.methods.rounds(props.id).call({from:props.isLoggedin.address});
+        const rounds2 = await contractprediction.methods.rounds(Number(props.id) - 1).call({from:props.isLoggedin.address});
+        console.log(rounds);
+        setclosedPrice2(rounds2.closePrice / 10 ** 8);
+        setclosedPricediff(Math.abs(rounds.closePrice - rounds2.closePrice) / 10 ** 8);
+        setlockedPrice(rounds.lockPrice / 10 ** 8);
+        settotalAmount(rounds.totalAmount / 10 ** 18);
+        setclosedPrice(rounds.closePrice / 10 ** 8);
+        settotalBets(Number(rounds.bullAmount) / 10 ** 18 + Number(rounds.bearAmount) / 10 ** 18);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    setInterval(() => {
+      getValues2();
+    }, 1000);
+  }, [props]);
+*/
+  return (
+    <CardDiv className={`${props.colorvalue} ${props.status} ${props.comp} mycard `}>
+      <header>
+        <div>
+          {props.status == "active" ? <LiveIcon /> : <Locked />}
+          Live
+        </div>
+        #{!props.isLoggedin ? "" : props.id}
+      </header>
+
+      <div className="content">
+        <div className="top">
+          <h3>Up</h3>
+          <div className="val">{(1 * payoutDown).toFixed(2)}x Payout</div>
+        </div>
+        <div className="greenborder"></div>
+        <div className="payoutbx">
+          <div className="values">
+            <h5>Last Price</h5>
+            <div className="price">
+              <h4>${(1 * props.isOracle.payload9).toFixed(1)}</h4>
+
+              <span>
+                {" "}
+                {closedPrice - closedPrice2 > 0 ? "UP" : "DOWN"} ${(1 * closedPricediff).toFixed(1)}
+              </span>
+            </div>
+          </div>
+          <div className="infos">
+            <div className="row">
+              Locked Price:
+              <b>${(1 * lockedPrice).toFixed(1)}</b>
+            </div>
+            <div className="row">
+              Prize Pool:
+              <b>{(1 * totalAmount).toFixed(2)} BNB</b>
+            </div>
+          </div>
+        </div>
+        <div className="redborder"></div>
+        <div className="bottom">
+          <h3>Down</h3>
+          <div className="val">{(1 * payoutUp).toFixed(2)}x Payout</div>
+        </div>
+      </div>
+    </CardDiv>
+  );
+};
+const CardDiv = styled.div`
+  width: 20%;
+  background: rgba(196, 196, 196, 0.1);
+  border-radius: 10px;
+  margin: 0 10px;
+  color: #b2b2b2;
+  overflow: hidden;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #6d6d6d;
+    position: relative;
+    div {
+      font-weight: 700;
+      font-size: 17px;
+      color: #5d5d5d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      svg {
+        margin-right: 8px;
+        height: 16px;
+        margin-top: -2px;
+      }
+    }
+  }
+
+  .content {
+    padding: 13px 16px;
+    .top {
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #898989;
+        font-weight: 700;
+      }
+      .val {
+        font-size: 14px;
+        margin-top: 6px;
+        color: #5a5a5a;
+        font-weight: 600;
+      }
+      margin-bottom: 13px;
+      text-align: center;
+    }
+    .bottom {
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #898989;
+        font-weight: 700;
+      }
+      .val {
+        font-size: 14px;
+        margin-top: 6px;
+        color: #5a5a5a;
+        font-weight: 600;
+      }
+      margin-top: 14px;
+      text-align: center;
+    }
+    .greenborder {
+      width: 100%;
+      height: 2px;
+      background: green;
+      margin: 5px 0;
+      opacity: 0;
+      border-radius: 8px;
+    }
+    .redborder {
+      width: 100%;
+      height: 2px;
+      background: #f05e47;
+      margin: 5px 0;
+      opacity: 0;
+      border-radius: 8px;
+    }
+    .payoutbx {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0px 13px 8px rgba(0, 0, 0, 0.06);
+      margin: 0;
+      border-radius: 8px;
+      .values {
+        padding: 18px;
+        border-bottom: 2px dotted #272727;
+        h5 {
+          font-weight: 500;
+          font-size: 15px;
+          color: #909090;
+        }
+        .price {
+          display: flex;
+          // justify-content:space-between;
+          align-items: center;
+          h4 {
+            margin: 0;
+            color: #fff;
+          }
+          span {
+            margin-left: 14px;
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-weight: 500;
+            font-size: 15px;
+          }
+        }
+      }
+      .infos {
+        padding: 10px 18px;
+        .row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 16px;
+          color: #b2b2b2;
+          margin: 6px 0;
+          font-size: 15px;
+          b {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  opacity: 0.7;
+  &.green {
+    .top {
+      h3 {
+        color: #b2b2b2;
+      }
+      .val {
+        color: #69dc4e;
+      }
+    }
+    .greenborder {
+      opacity: 1;
+    }
+    .payoutbx {
+      .price {
+        span {
+          color: #69dc4e;
+          background: #2d3e29;
+        }
+      }
+    }
+  }
+  &.red {
+    .bottom {
+      h3 {
+        color: #b2b2b2;
+      }
+      .val {
+        color: #f05e47;
+      }
+    }
+    .redborder {
+      opacity: 1;
+    }
+    .payoutbx {
+      .price {
+        span {
+          color: #f05e47;
+          background: #4b3430;
+        }
+      }
+    }
+  }
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.home {
+    header {
+      background: transparent;
+      &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        right: 0%;
+        top: 0%;
+        background: linear-gradient(
+          90deg,
+          #bb9d3a 0%,
+          #b5963a 1.81%,
+          #a78539 2.89%,
+          #9d7a38 4.23%,
+          #987338 6.12%,
+          #967138 11.37%,
+          #9b763a 18.26%,
+          #a9863f 26.92%,
+          #c0a047 36.52%,
+          #e0c352 46.73%,
+          #edd156 50.25%,
+          #967930 67%,
+          #9a7d31 74.05%,
+          #a68936 81.2%,
+          #bb9c3d 88.4%,
+          #d7b746 95.59%,
+          #dcbc48 96.73%
+        );
+        opacity: 0.2;
+        z-index: -1;
+      }
+    }
+  }
+`;
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedin: state.isLoggedin,
+    isPage: state.isPage,
+    isPlayer1: state.isPlayer1,
+    isPlayer2: state.isPlayer2,
+    isBetsPlayer1: state.isBetsPlayer1,
+    isBetsPlayer2: state.isBetsPlayer2,
+    isTotalBets: state.isTotalBets,
+    isFlip: state.isFlip,
+    isEpoch: state.isEpoch,
+    isOracle: state.isOracle,
+  };
+};
+
+export default connect(mapStateToProps)(CardLive);

@@ -1,0 +1,373 @@
+import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
+import Flower from "../../assets/Icons/Flower";
+import { useDispatch, connect } from "react-redux";
+import "../Row/row.css"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  toggleName1,
+  toggleName2,
+  toggleBets1,
+  toggleBets2,
+  toggleTotalBets,
+  toggleActive,
+  togglePred,
+  toggleImage1,
+  toggleImage2,
+} from "../../actions";
+import "./styling.js";
+
+import contracts from "../../config/constants/contracts";
+import abis from "../../config/constants/abi";
+import RowOuter from "./styling.js";
+
+const Web3 = require("web3");
+const web3 = new Web3(Web3.givenProvider);
+const liveEventsContract = new web3.eth.Contract(abis.LiveEvents.MainNet, contracts.LiveEvents.MainNet);
+
+const Row = (props) => {
+  const [betOn, setbetted] = useState(0);
+  const [bettingTimer, setBettingTimer] = useState(0);
+  const [confirmBetButton, setBetButtonName] = useState("Confirm Bet");
+  const [currentWalletBalance, setBalance] = useState("-");
+  const [Player1, setPlayer1] = useState("-");
+  const [bettingCloseDate, setBettingCloseDate] = useState("-");
+  const [Player2, setPlayer2] = useState("-");
+  const [activenm, setActivenm] = useState("home");
+  const [Bets1, setBets1] = useState("-");
+  const [Bets2, setBets2] = useState("-");
+  const [TotalBets, setTotalBets] = useState("-");
+  const [showClaim, makeClaimAmountVisible] = useState(false);
+  const [hideit, sethideit] = useState("false");
+
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    return;
+    const interval = setTimeout(async () => {
+      console.log(props.isLoggedin.address);
+      if (!web3 || !window.ethereum || !props.isLoggedin.address) {
+        //  setBetButtonName("Please Login");
+        return;
+      } else {
+        var temp;
+        temp = await liveEventsContract.methods.getBet(props.id).call({ from: props.isLoggedin.address });
+        setbetted(Number(temp.selected));
+
+        if (Number(temp.selected) == 0 && props.active == true) {
+          sethideit("true");
+        } else {
+          sethideit("false");
+        }
+      }
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [props]);
+
+
+  useEffect(() => {
+    return;
+    const interval = setInterval(async () => {
+      if (!web3 || !window.ethereum) {
+        return;
+        // setBetButtonName("Please Login");
+      } else {
+        getValues();
+
+      }
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  async function makemain() {
+    return;
+    try {
+      if (!web3 || !window.ethereum) return;
+      var temp = await liveEventsContract.methods.getBet(props.match.contractID).call({ from: props.isLoggedin.address });
+      var temp2 = await liveEventsContract.methods.bets(props.id).call({ from: props.isLoggedin.laddress });
+
+      const Bets1 = temp.totalBetsOne;
+      const Bets2 = temp.totalBetsTwo;
+
+      const TotalBets = temp.totalbets;
+      dispatch(toggleBets1(Bets1));
+      dispatch(toggleBets2(Bets2));
+      dispatch(toggleTotalBets(TotalBets));
+      dispatch(toggleActive(props.match.contractID));
+      dispatch(toggleName1(temp2.name1));
+      dispatch(toggleName2(temp2.name2));
+      dispatch(toggleImage1(props.img1));
+      dispatch(toggleImage2(props.img2));
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function UpdateBettingCloseTimer() {
+    if (!web3 || !window.ethereum) return;
+    const currentEvent = await liveEventsContract.methods.Events(props.match.contractID).call({from: props.isLoggedin.address});
+    const timeNow = Math.round(Date.now() / 1000);
+    const secondsBeforeBetsClose = currentEvent.closeTimestamp - timeNow;
+    if (secondsBeforeBetsClose < 0) {
+      setBettingTimer("Ended");
+      return;
+    }
+    const timeBeforeBetsClose = SecondsToHumanReadableTime(secondsBeforeBetsClose);
+    const dateWhenBetsClose = TimestampToDate(currentEvent.closeTimestamp);
+    setBettingCloseDate(dateWhenBetsClose);
+    setBettingTimer(timeBeforeBetsClose);
+  }
+
+
+  function SecondsToHumanReadableTime(secondsToConvert) {
+    let totalTime = secondsToConvert;
+    const days = Math.floor(totalTime / 86400);
+    totalTime -= days * 86400;
+    const hours = Math.floor(totalTime / 3600) % 24;
+    totalTime -= hours * 3600;
+    const minutes = Math.floor(totalTime / 60) % 60;
+    totalTime -= minutes * 60;
+    const seconds = totalTime;
+    const formattedTime = (
+      (days < 10 ? "0" + days : days) +
+      (days == 1 ? " day " : " days ") +
+      (hours < 10 ? "0" + hours : hours) +
+      ":" + (minutes < 10 ? "0" + minutes : minutes) +
+      ":" + (seconds < 10 ? "0" + seconds : seconds)
+    );
+    return formattedTime;
+  }
+
+  function TimestampToDate(unixTimestamp) {
+    const date = new Date(unixTimestamp * 1000);
+    var day = date.getDate();
+    var month = date.getMonth() + 1; // getMonth returns 0-11
+    var year = date.getFullYear().toString();
+    var slicedYear = year.slice(2);
+
+    const formattedDate = (
+      (day < 10 ? "0" + day : day) +
+      "/" + (month < 10 ? "0" + month : month) +
+      "/" + slicedYear
+    );
+    return formattedDate;
+  }
+
+
+  async function EngageClaimButton() {
+    if (!web3 || !window.ethereum || !props.isLoggedin.address) return;
+    const canClaim = await liveEventsContract.methods.claimable(
+      props.match.contractID, props.isLoggedin.address).call();
+    if (canClaim)
+      makeClaimAmountVisible(true);
+    else
+      makeClaimAmountVisible(false);
+  }
+
+
+  function UpdateWalletBalance() {
+    try {
+      alert(props.currentBalance.balance);
+      setBalance(props.currentBalance.balance);
+    } catch (e) {
+      // do nothing
+    }
+  }
+
+
+  useEffect(() => {
+    UpdateWalletBalance();
+  }, [props.currentBalance]);
+
+  useEffect(() => {
+    const timerUpdater = setTimeout(() => UpdateBettingCloseTimer(), 1000);
+    const claimButtonUpdater = setTimeout(() => EngageClaimButton(), 3000);
+    return () => {
+      clearInterval(timerUpdater);
+      clearInterval(claimButtonUpdater);
+    };
+  });
+
+  async function getValues() {
+    return;
+    try {
+      if (confirmBetButton == "") {
+        setBetButtonName("Confirm Bet");
+      }
+      // var temp3 = await liveEventsContract.methods.bets(props.isLoggedin.address).call({ from: props.isLoggedin.address });
+
+      // These values are consistent across the pure(readonly) contract functions
+      // However, .betEnter() uses different values. Be mindful of that.
+      const betPositions = { none: 1, teamOne: 1, draw: 2, teamTwo: 3 };
+
+      const currentEvent = await liveEventsContract.methods.Events(props.match.contractID).call({ from: () => props.isLoggedin.address });
+      const currentBet = await liveEventsContract.methods.Bets(
+        props.match.contractID, props.isLoggedin.address).call({ from: () => props.isLoggedin.address });
+
+      var temp = await liveEventsContract.methods.getBet(props.id).call({ from: () => props.isLoggedin.address });
+      var temp2 = await liveEventsContract.methods.bets(props.id).call();
+
+      const Bets1 = temp.totalBetsOne;
+      const Bets2 = temp.totalBetsTwo;
+      const TotalBets = temp.totalbets;
+
+      setBets1(Bets1);
+      setBets2(Bets2);
+      setPlayer1(temp2.name1);
+      setPlayer2(temp2.name2);
+      setTotalBets(TotalBets);
+      //dispatch(toggleName1(temp2.name1));
+      //dispatch(toggleName2(temp2.name2));
+
+      UpdateWalletBalance();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  function onlinkclick(name) {
+    if (!web3) return;
+    dispatch(togglePred(true));
+    // console.log("makingmain");
+    makemain();
+    setActivenm(name);
+  }
+  /*
+  async function assign() {
+    if (!web3 ) return;
+    dispatch(toggleName1(props.name1));
+    dispatch(toggleName2(props.name1));
+    dispatch(toggleBets1(Bets1));
+    dispatch(toggleBets2(Bets2));
+    dispatch(toggleActive(liveEventsContract));
+  }
+*/
+  async function claim() {
+    if (!web3) return;
+    const buytickets = await liveEventsContract.methods.claim(props.match.contractID).send({ from: props.isLoggedin.address, gas: 400000 });
+    console.log(buytickets);
+  }
+
+  function TeamOneInfo() {
+    return (
+      <div className="namebx namebxlst rightrow">
+        <tr>
+          <th scope="col">
+            <img className="teamImg" src={props.match.teamA.logoURL} alt="image here" height="60" width="60" />
+          </th>
+          <th scope="col">
+            <h5>{props.match.teamA.name}</h5>
+          </th>
+        </tr>
+      </div>
+    );
+  }
+
+  function TeamTwoInfo() {
+    return (
+      <div className="namebx namebxlst rightrow">
+        <tr>
+          <th scope="col">
+            <img className="teamImg" src={props.match.teamB.logoURL} alt="image here" height="50" width="50" />
+          </th>
+          <th scope="col">
+            <h5>{props.match.teamB.name}</h5>
+          </th>
+        </tr>
+      </div>
+    );
+  }
+
+  return (
+    <React.Fragment>
+      {hideit == "true" ? null : (
+        <Link exact to="/bet" style={{ textDecoration: "none" }} onClick={() => onlinkclick("pred")}>
+          <RowOuter
+            to="/bet"
+            //  onClick={() => assign()}
+            className={`${props.colorvalue} ${props.status} wow fadeInDown`}
+            data-wow-duration="0.5s"
+            data-wow-delay="0.4s"
+          >
+            <div className="left">
+              <div>
+                <h5>{props.sport}</h5>
+                {bettingTimer == "Ended" ? (
+                  <div className="time">{bettingTimer}</div>
+                ) : (
+                  <div className="time">
+                    {bettingCloseDate} - {bettingTimer} left
+                  </div>
+                )}
+                Match id: {props.match.contractID}
+              </div>
+
+              {showClaim == true ? (
+                <div className="gradientbtn" onClick={() => claim(props.match.contractID)}>
+                  Claim
+                </div>
+              ) : (
+                ""
+              )}
+
+              <div>
+                <Flower />
+                {TotalBets == "-" ? "-" : 1 * TotalBets}
+              </div>
+            </div>
+
+            <div className="center">
+              <span>Total Bet</span>
+              {Bets1 == "-" && Bets2 == "-" ? (
+                " - "
+              ) : (Number(Bets1) + Number(Bets2)) / 10 ** 18 < 0.1 ? (
+                <b className="val"> under 0.1 </b>
+              ) : (
+                <b className="val">{((Number(Bets1) + Number(Bets2)) / 10 ** 18).toFixed(4)}</b>
+              )}
+              <b className="grad">BNB</b>
+            </div>
+
+            <div className="right">
+              <div className="namebx namebxlst rightrow">
+                <TeamOneInfo />
+              </div>{" "}
+              <div className="versus rightrow">
+                <div className={betOn == 1 ? `${props.colorvalue} times` : `times`}>
+                  {!props.isLoggedin || Bets1 == 0 ? "0" : (1 + Bets2 / Bets1).toFixed(2)}x
+                </div>
+                <span>VS</span>
+                <div className={betOn == 2 ? `${props.colorvalue} times` : `times`}>
+                  {!props.isLoggedin || Bets2 == 0 ? "0" : (1 + Bets1 / Bets2).toFixed(2)}x
+                </div>
+              </div>
+              <div className="namebx namebxlst rightrow">
+                <TeamTwoInfo />
+              </div>{" "}
+            </div>
+          </RowOuter>
+        </Link>
+      )}
+    </React.Fragment>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedin: state.isLoggedin,
+    isPage: state.isPage,
+    isPlayer1: state.isPlayer1,
+    isPlayer2: state.isPlayer2,
+    isBetsPlayer1: state.isBetsPlayer1,
+    isBetsPlayer2: state.isBetsPlayer2,
+    isTotalBets: state.isTotalBets,
+    isActive: state.isActive,
+  };
+};
+
+export default connect(mapStateToProps)(Row);

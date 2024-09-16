@@ -1,0 +1,59 @@
+// This file is designed to abstract interactions with the backend API
+// It fetches a list of matches from the backend.
+// And returns them
+
+// const baseURL = "https://secure-shore-43384.herokuapp.com/v1/"; // RIP old backend
+const baseURL = "http://100.25.180.27/v1"
+const matchesURL = baseURL + "/matches.json";
+const loginURL   = baseURL + "/auth/login";
+let authToken;
+let matchesAll;
+
+const loginParams = {
+  email: 'main@ibetcrypto.io',
+  password: 'GreenBushesWithCrypt0'
+};
+
+
+async function PostAuthToken() {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' },
+    body: JSON.stringify( loginParams )  
+  };
+  const response = await fetch(loginURL, options);
+  const data = await response.json();
+  return data.token;
+}
+
+async function GetMatches(paramsForGET) {
+  const options = {
+    method: 'GET',
+    headers: {
+//      'Accept': 'application/json',
+//      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': 'Bearer '+authToken.accessToken,
+      'Content-Type': 'application/json'
+    },
+  };
+  const response = await fetch(matchesURL + "/" + paramsForGET, options);
+  const data = await response.json();
+  return data.matches;
+}
+
+async function FetchAllMatches() {
+  authToken = await PostAuthToken();
+  const matches = await GetMatches( "?perPage=100");
+
+  // Remove the below bit in production
+  /*
+  for (let match of matches) {
+    var matchInfo = "match #" + match.contractID + ': of type "' + match.matchType.name + '" - ends at ' + match.endDate;
+    console.log(matchInfo);
+  }
+  */
+  return matches;
+}
+
+export default matchesAll = FetchAllMatches();  

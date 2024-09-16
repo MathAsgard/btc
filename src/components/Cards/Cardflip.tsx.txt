@@ -1,0 +1,348 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+// @ts-nocheck
+import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
+import Next from "../../assets/Icons/Next";
+import ReactSlider from "react-slider";
+import { useDispatch, connect } from "react-redux";
+import contracts from "../../config/constants/contracts";
+import abis from "../../config/constants/abi";
+import { toggleFlip } from "../../actions";
+const BigNumber = require("bignumber.js");
+const Web3 = require("web3");
+const web3 = new Web3(Web3.givenProvider);
+const contractprediction = new web3.eth.Contract(abis.Prediction.MainNet, contracts.Prediction.MainNet);
+
+const StyledThumb = styled.div`
+  height: 25px;
+  line-height: 25px;
+  width: 25px;
+  text-align: center;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  border-radius: 50%;
+  cursor: grab;
+  border: 0;
+  outline: none !important;
+  margin-top: 20px;
+  position: relative;
+  transform: translateX(-10px);
+  &::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -24px;
+    background: #e1c452;
+    transition: width 0.7s ease, background-color 0.5s ease;
+    z-index: -1;
+    border-radius: 50%;
+  }
+`;
+
+const Thumb = (props, state) => <StyledThumb {...props}>{state.valueNow}</StyledThumb>;
+
+const StyledSlider = styled(ReactSlider)`
+  width: 100%;
+  height: 8px;
+  margin: 14px auto 50px;
+  width: calc(100% - 20px);
+`;
+
+const StyledTrack = styled.div`
+  top: 0;
+  bottom: 0;
+  background: ${(props) => (props.index === 2 ? "#222222" : props.index === 1 ? "#0A0A0A" : "#222222")};
+  //   border-radius: 10px;
+`;
+
+const Track = (props, state) => <StyledTrack {...props} index={state.index} />;
+
+const Cardflip = (props) => {
+  //console.log(props);
+  const [activenm, setactivenm] = useState("");
+  const [activenm2, setactivenm2] = useState("");
+  const [balance, setbalance] = useState("");
+  const [mode, setmode] = useState(true);
+  const [tx, settx] = useState(0);
+
+  const dispatch = useDispatch();
+  function isActive(name: String) {
+    return activenm == name;
+  }
+
+  useEffect(async () => {
+    if (!props.isLoggedin.address) return;
+    if (props.isLoggedin) {
+      setbalance((await web3.eth.getBalance(web3.utils.toChecksumAddress(props.isLoggedin.address))) / 10 ** 18);
+    }
+  }, [props.isLoggedin.address]);
+
+  useEffect(async () => {
+    if (!props.isLoggedin.address) return;
+    if (props.isLoggedin) {
+      setbalance((await web3.eth.getBalance(web3.utils.toChecksumAddress(props.isLoggedin.address))) / 10 ** 18);
+    }
+  }, []);
+
+  function handleChangeInput1(e) {
+    try {
+      setmode(true);
+      setactivenm(e.target.value);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  function handleChangeInput2(e) {
+    try {
+      setmode(false);
+
+      setactivenm2(e);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function bet() {
+    if (!props.isLoggedin.address) return;
+    var bettingamount = mode == true ? 1 * activenm : (1 * activenm2).toFixed(2);
+    var bet = new BigNumber(web3.utils.toWei(String(bettingamount), "gwei"));
+
+    if (props.type == "up") {
+      const predict = await contractprediction.methods
+        .betBull(props.isEpoch.payload8)
+        .send({ from: props.isLoggedin.address, value: bet * 1000000000, gas: 400000 });
+      console.log(predict);
+      settx(`https://bscscan.com/tx/${predict.transactionHash}`);
+    }
+    if (props.type == "udown") {
+      const predict = await contractprediction.methods
+        .betBear(props.isEpoch.payload8)
+        .send({ from: props.isLoggedin.address, value: bet * 1000000000, gas: 400000 });
+      console.log(predict);
+      settx(`https://bscscan.com/tx/${predict.transactionHash}`);
+    }
+  }
+
+  return (
+    <CardDiv className={`${props.comp} ${props.type} mycard`}>
+      <header>
+        <div>
+          <i onClick={() => dispatch(toggleFlip())} className="fas fa-arrow-left"></i>
+          Set Position
+        </div>
+        <span>
+          <i className={props.type == "down" ? "fas fa-arrow-down" : "fas fa-arrow-up"}></i>
+          {props.type == "down" ? "Down" : "Up"}
+        </span>
+      </header>
+
+      <div className="content">
+        <div className="top">
+          <div className="info">
+            <h5>Commit</h5>
+            <div className="rembal">Balance: {(1 * balance).toFixed(2)} </div>
+            <b className="gradtext">BNB</b>
+          </div>
+          <input
+            step=".01"
+            className="inputNoArrows"
+            type="number"
+            value={mode == true ? 1 * activenm : (1 * activenm2).toFixed(2)}
+            onChange={handleChangeInput1}
+          />
+        </div>
+        <div className="slider">
+          {/* @ts-ignore */}
+          <StyledSlider className="horizontal-slider" thumbClassName="example-thumb" renderTrack={Track} renderThumb={Thumb} />
+          <div className="iptoptions">
+            <div className="row">
+              <button className={isActive("10") ? "active" : ``} onClick={() => handleChangeInput2((10 / 100) * balance)}>
+                10%
+              </button>
+              <button className={isActive("20") ? "active" : ``} onClick={() => handleChangeInput2((20 / 100) * balance)}>
+                20%
+              </button>
+              <button className={isActive("50") ? "active" : ``} onClick={() => handleChangeInput2((50 / 100) * balance)}>
+                50%
+              </button>
+              <button className={isActive("75") ? "active" : ``} onClick={() => handleChangeInput2((75 / 100) * balance)}>
+                75%
+              </button>
+
+              <button className="maxbtn" onClick={() => handleChangeInput2(balance)}>
+                Max
+              </button>
+            </div>
+          </div>
+        </div>
+        <button className="gradientbtn gradbtn">Coming Soon</button>
+        {tx == 0 ? (
+          ""
+        ) : (
+          <div className="gradbtn">
+            <a className="maxbtn" href={tx} target="_blank" rel="noopener noreferrer">
+              View latest Tx
+            </a>{" "}
+          </div>
+        )}
+      </div>
+    </CardDiv>
+  );
+};
+
+//onClick={() => bet()}
+// {activenm == "" && activenm2 == "" ? "Enter an amount" : "Confirm"}{" "}`
+const CardDiv = styled.div`
+  width: 20%;
+  background: rgba(196, 196, 196, 0.1);
+  border-radius: 10px;
+  margin: 0 10px;
+  color: #b2b2b2;
+  // border:2px solid transparent;
+  overflow: hidden;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    background: #0c0c0c;
+    color: #6d6d6d;
+    position: relative;
+    .fa-arrow-left {
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    div {
+      font-weight: 700;
+      font-size: 17px;
+      color: #5d5d5d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      svg {
+        margin-right: 8px;
+        height: 16px;
+        margin-top: -2px;
+      }
+    }
+    span {
+      color: #69dc4e;
+      background: #2d3e29;
+      padding: 3px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      i {
+        margin-right: 8px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .content {
+    padding: 13px 16px;
+    // display:flex;
+    // flex-direction:column;
+    // justify-content:space-between;
+    .top {
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h5 {
+          margin: 0;
+          font-size: 16px;
+          color: rgba(255, 255, 255, 0.3);
+        }
+        margin-bottom: 8px;
+      }
+      input {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 8px;
+        outline: 0;
+        padding: 8px 8px;
+        width: 100%;
+        color: #fff;
+        &:focus {
+          border: 1px solid rgba(255, 255, 255, 0.26) !important;
+        }
+      }
+      .rembal {
+        text-align: right;
+        color: rgba(255, 255, 255, 0.26);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    }
+
+    .slider {
+      .iptoptions {
+        .row {
+          margin: 0 -6px;
+          display: flex;
+          justify-content: space-between;
+          margin: 16px 0;
+          button {
+            outline: 0;
+            border: 0;
+            background: rgba(89, 89, 89, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+            // width:calc(25% - 10px);
+            padding: 7px 9px;
+            border-radius: 7px;
+            font-size: 12px;
+            margin: 0 3px;
+            &.active {
+              background: rgba(89, 89, 89, 0.7);
+            }
+          }
+        }
+      }
+    }
+
+    .gradbtn {
+      color: #000;
+      width: 100%;
+      &:before {
+        display: none !important;
+      }
+    }
+
+    .warning {
+      font-size: 12px;
+      margin-top: 8px;
+      color: rgba(237, 237, 237, 0.2);
+    }
+  }
+
+  &.down {
+    header {
+      span {
+        color: #f05e47;
+        background: #4b3430;
+      }
+    }
+  }
+`;
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedin: state.isLoggedin,
+    isPage: state.isPage,
+    isPlayer1: state.isPlayer1,
+    isPlayer2: state.isPlayer2,
+    isBetsPlayer1: state.isBetsPlayer1,
+    isBetsPlayer2: state.isBetsPlayer2,
+    isTotalBets: state.isTotalBets,
+    isFlip: state.isFlip,
+    isEpoch: state.isEpoch,
+  };
+};
+
+export default connect(mapStateToProps)(Cardflip);
