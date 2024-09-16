@@ -1,0 +1,16 @@
+.partners {
+  h3 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .imgOuter {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    img {
+      margin: 20px;
+      height: 70px;
+      width: auto;
+    }
+  }
+}

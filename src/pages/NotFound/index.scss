@@ -1,0 +1,72 @@
+.notFound {
+#bgVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index:-3
+}
+.bgOverlay {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background:rgba(0,0,0,0.80);
+    min-width: 100%; 
+    min-height: 100%;
+    z-index:-2
+}
+    display:flex;
+    align-items:center;
+    margin-top:-80px;
+    min-height:calc( 100vh - 160px );
+   
+    .message {
+        width:100%;
+        padding:10px 60px;
+        top: 50%;
+        margin-right:auto;
+        margin-left:auto;
+        text-align: center;
+        h1 {
+            margin-top: 0;
+            font-size:72px;
+        }
+        p {
+            color:#696865;
+            //margin:30px 0 40px;
+            font-size:44px;
+            margin-right:auto;
+            margin-left:auto;
+        }
+        .gradientbtn {
+            width: fit-content;
+            font-size:36px;
+            height: 86px;
+            color:#000;
+            font-weight:600;
+            margin-right:auto;
+            margin-left:auto;
+            &::before{display:none;}
+        }
+    }
+
+  @media screen and (max-width: 700px){
+    .message{
+    transform: scale(0.8);
+    }
+  }
+
+
+  @media screen and (max-width: 500px){
+    .message{
+    transform: scale(0.65);
+    }
+  }
+
+  @media screen and (max-width: 400px){
+    .message{
+    transform: scale(0.45);
+    }
+  }
+}

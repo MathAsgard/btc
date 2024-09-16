@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  text-align:left;
+  background:#000000
+}
+
+code {
+  font-family: 'Poppins', sans-serif;
+}
+
+.middlesec{
+  min-height:calc(100vh - 290px);
+}
+
+button{
+  outline: none !important;
+  border: 0;
+}
+
+
+
+.gradientbtn{
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(90deg, #BB9D3A 0%, #B5963A 1.81%, #A78539 2.89%, #9D7A38 4.23%, #987338 6.12%, #967138 11.37%, #9B763A 18.26%, #A9863F 26.92%, #C0A047 36.52%, #E0C352 46.73%, #EDD156 50.25%, #967930 67%, #9A7D31 74.05%, #A68936 81.2%, #BB9C3D 88.4%, #D7B746 95.59%, #DCBC48 96.73%);
+  padding: 0px 30px;
+  font-size: 14px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  &::before {
+    content: "";
+    position:absolute;
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    left:50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #000;
+    transition: width 0.7s ease, background-color 0.5s ease;
+    z-index: -1;
+    border-radius: 6px;
+  }
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.05);
+  }
+}
+
+.gradtext{
+  background: -webkit-linear-gradient(#AC8940, #E2C651, #D7B746);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.mycard{
+  max-width: 300px;
+  height: 410px;
+  min-width: 280px;
+}
+.container{
+  max-width: unset;
+  padding: 0 7%;
+}
+
+
+.slick-slide{
+  .mycard{
+    margin:auto;
+  }
+}
+.slick-arrow{
+  display: none !important;
+}
+.slick-list{
+  overflow-y: visible !important;
+}
+
+.slick-track
+{
+    display: flex !important;
+}
+
+.slick-slide
+{
+    height: inherit !important;
+}
+
+
+
+

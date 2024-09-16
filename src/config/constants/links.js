@@ -1,0 +1,1 @@
+export const telegramGroupLink = "https://t.me/iBetCrypto";
