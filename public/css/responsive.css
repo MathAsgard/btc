@@ -1,0 +1,607 @@
+@media(min-width:1351px) and (max-width:1649px){
+	.gro-dt h2{font-size: 14px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+	#myModal .modal-content{width: 1150px;}
+	#myModal .modal-body h2{font-size: 26px;}
+	#myModal .modal-body p{font-size: 16px;}
+
+
+}
+
+@media(min-width:1025px) and (max-width:1350px){
+	#my_video_1{
+		transform: scale(0.7);
+	}
+	.gro-dt h2{font-size: 14px;}
+	.gro-dt h2 span{font-size: 11px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+
+	.cloknm h3{font-size: 28px;}
+	.clock-ic i{height: 50px;width: 50px;line-height: 50px;font-size: 20px;}
+	.enter-cnt .cnt-btn{font-size: 12px;}
+
+	.cent-tab-hed ul li a{padding: 25px 30px;font-size: 15px;}
+	.join-block{width: 75%;}
+
+	#myModal .modal-content{width: 750px;}
+	#myModal .modal-body .iparea label{font-size: 14px;top: -10px;}
+	#myModal .modal-body .iparea .form-control{height: 30px;font-size: 13px;}
+	#myModal .modal-body .mlddt-block label span{padding: 0;display: block;}
+
+	#myModal .modal-body .mld-right-wrp .table td {padding: 26px 0;}
+	#myModal .modal-body .iparea .ipic{top: 22px;}
+	#myModal .modal-body .iparea .ipic i{font-size: 16px;}
+	#myModal .modal-body .iparea .slt-wrp{width: 98px;top: 15px;}
+	#myModal .modal-body .iparea .slt-wrp .form-control{height: 30px;padding: 0 10px;font-size: 13px;}
+
+	#myModal .modal-body h2{font-size: 24px;}
+	#myModal .modal-body p{font-size: 16px;}
+	#myModal .modal-body .iparea{padding:15px;}
+	#myModal .modal-body .mlddt-block label{font-size: 14px;}
+	#myModal .modal-body .mlddt-block p{font-size: 13px;}
+	#myModal .modal-body .mld-right-wrp .table tr:last-child td{padding: 38px 0;}
+	.mld-dt p{font-size: 13px !important;}
+
+	/* **** reservations **** */
+	.navbar-light .navbar-nav .nav-link{padding: 10px 1px;font-size: 12px;}
+	.navbar-light .navbar-nav .nav-link.btn-approve{font-size: 10px;}
+
+	.inner-page-wrp .main-banner .banner-dt{width: 75%;}
+	.main-banner .banner-block .banner-dt h1{font-size: 36px;}
+	.inner-page-wrp .main-banner .banner-dt p{font-size: 15px;}
+
+	.inner-page-wrp .tabs-wrp .nav-tabs{width: 75%;}
+	.inner-page-wrp .tabs-wrp .tab-content p{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box h3{font-size: 18px;margin: 5px auto 0;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .web-day-dt h4{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .day-btn a{font-size: 14px;padding: 5px 0;}
+	.box-last-wrp h5{font-size: 11px;}
+	.box-last-wrp strong {font-size: 12px;}
+
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd .pgrs-block p{font-size: 11px;}
+
+
+	/* **** Index **** */
+	.main-banner .banner-block .banner-img img{max-width: 70%;}
+	.exchange-wrp .exchange-dt h2{font-size: 36px;}
+	.overview-wrp .title h2{font-size: 36px;}
+	.overview-wrp .view-block{min-height: 431px;}
+
+	.transformer-wrp .transformer-block .transformer-dt h1{font-size: 36px;}
+	.transformer-wrp .transformer-block .transformer-dt p{font-size: 16px;}
+	.transformer-wrp{height: auto;padding: 200px 0;}
+
+	.contracts-wrp .title h2 {font-size: 36px;}
+}
+
+@media(min-width:992px) and (max-width:1024px){
+	#my_video_1{
+		transform: scale(0.6);
+	}
+	.gro-dt h2{font-size: 14px;}
+	.gro-dt h2 span{font-size: 11px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+
+	.cloknm h3{font-size: 28px;}
+	.clock-ic i{height: 50px;width: 50px;line-height: 50px;font-size: 20px;}
+	.enter-cnt .cnt-btn{font-size: 12px;}
+
+	.cent-tab-hed ul li a{padding: 25px 30px;font-size: 15px;}
+	.join-block{width: 75%;}
+
+
+	#myModal .modal-content{width: 750px;}
+	#myModal .modal-body .iparea label{font-size: 14px;top: -10px;}
+	#myModal .modal-body .iparea .form-control{height: 30px;font-size: 13px;}
+	#myModal .modal-body .mlddt-block label span{padding: 0;display: block;}
+
+	#myModal .modal-body .mld-right-wrp .table td {padding: 26px 0;}
+	#myModal .modal-body .iparea .ipic{top: 22px;}
+	#myModal .modal-body .iparea .ipic i{font-size: 16px;}
+	#myModal .modal-body .iparea .slt-wrp{width: 98px;top: 15px;}
+	#myModal .modal-body .iparea .slt-wrp .form-control{height: 30px;padding: 0 10px;font-size: 13px;}
+
+	#myModal .modal-body h2{font-size: 24px;}
+	#myModal .modal-body p{font-size: 16px;}
+	#myModal .modal-body .iparea{padding:15px;}
+	#myModal .modal-body .mlddt-block label{font-size: 14px;}
+	#myModal .modal-body .mlddt-block p{font-size: 13px;}
+	#myModal .modal-body .mld-right-wrp .table tr:last-child td{padding: 38px 0;}
+	.mld-dt p{font-size: 13px !important;}
+
+	/* **** reservations **** */
+	.navbar-light .navbar-nav .nav-link{padding: 10px 1px;font-size: 12px;}
+	.navbar-light .navbar-nav .nav-link.btn-approve{font-size: 10px;}
+
+	.inner-page-wrp .main-banner .banner-dt{width: 75%;}
+	.main-banner .banner-block .banner-dt h1{font-size: 36px;}
+	.inner-page-wrp .main-banner .banner-dt p{font-size: 15px;}
+	.inner-page-wrp .main-banner .banner-dt img{max-width: 50%;}
+
+	.inner-page-wrp .tabs-wrp .nav-tabs{width: 75%;}
+	.inner-page-wrp .tabs-wrp .tab-content p{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box h3{font-size: 18px;margin: 5px auto 0;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .web-day-dt h4{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .day-btn a{font-size: 14px;padding: 5px 0;}
+	.box-last-wrp h5{font-size: 11px;}
+	.box-last-wrp strong {font-size: 12px;}
+
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd .pgrs-block p{font-size: 11px;}
+
+
+
+	/* **** Index **** */
+	.main-banner .banner-block .banner-img img{max-width: 70%;}
+	.exchange-wrp .exchange-dt h2{font-size: 36px;}
+	.overview-wrp .title h2{font-size: 36px;}
+	.overview-wrp .view-block{min-height: 431px;}
+
+	.transformer-wrp .transformer-block .transformer-dt h1{font-size: 36px;}
+	.transformer-wrp .transformer-block .transformer-dt p{font-size: 16px;}
+	.transformer-wrp{height: auto;padding: 200px 0;}
+
+	.contracts-wrp .title h2 {font-size: 16px;}
+}
+
+
+@media(min-width:768px) and (max-width:991px){
+	#my_video_1{transform: scale(0.6);transform-origin: center;}
+	.vid-outer{flex-direction: column;}
+	.vid-tag-outer{margin-left: 0;width: 100%;}
+	.inner-page-wrp .main-banner .banner-dt img{width: 100%;}
+	.gro-dt h2{font-size: 14px;}
+	.gro-dt h2 span{font-size: 11px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+
+	.cloknm h3{font-size: 28px;}
+	.clock-ic i{height: 50px;width: 50px;line-height: 50px;font-size: 20px;}
+	.cloknm p{font-size: 13px;}
+	.enter-cnt .cnt-btn{font-size: 12px;}
+
+	.cent-tab-hed ul li a{padding: 20px 22px;font-size: 12px;}
+	.inner-center-part{padding: 200px 50px 50px 125px;}
+	.contn-pt-one{padding: 20px;}
+
+	.join-block{width: 100%;}
+	.join-block img{width: 60px;margin: 0 auto 20px;}
+	.join-block h3{font-size: 18px;}
+	.join-block p{font-size: 13px;}
+
+	#myModal .modal-content{width: 550px;}
+	#myModal .modal-body .iparea label{font-size: 14px;top: -10px;}
+	#myModal .modal-body .iparea .form-control{height: 30px;font-size: 13px;}
+	/*#myModal .modal-body .mlddt-block label span{padding: 0;display: block;}*/
+
+	#myModal .modal-body .mld-right-wrp .table td {padding: 26px 0;}
+	#myModal .modal-body .iparea .ipic{top: 22px;}
+	#myModal .modal-body .iparea .ipic i{font-size: 16px;}
+	#myModal .modal-body .iparea .slt-wrp{width: 98px;top: 15px;}
+	#myModal .modal-body .iparea .slt-wrp .form-control{height: 30px;padding: 0 10px;font-size: 13px;}
+
+	#myModal .modal-body h2{font-size: 24px;}
+	#myModal .modal-body p{font-size: 16px;}
+	#myModal .modal-body .iparea{padding:15px;}
+	#myModal .modal-body .mlddt-block label{font-size: 14px;}
+	#myModal .modal-body .mlddt-block p{font-size: 13px;}
+	.mld-dt p{font-size: 13px !important;}
+	#myModal .modal-body .mlddt-block .mldbtn a{padding: 10px 0;margin: 15px 0;}
+
+	#myModal .modal-body .mld-right-wrp .table td{padding: 10px 0; font-size: 13px;}
+	#myModal .modal-body .mld-right-wrp .table tr:last-child td{padding: 10px 0;}
+
+	/* **** reservations **** */
+	.navbar-light .navbar-nav .nav-link{padding: 10px 1px;font-size: 12px;}
+	.navbar-light .navbar-nav .nav-link.btn-approve{font-size: 10px;}
+
+	.inner-page-wrp .main-banner .banner-dt{width: 75%;}
+	.main-banner .banner-block .banner-dt h1{font-size: 36px;}
+	.inner-page-wrp .main-banner .banner-dt p{font-size: 15px;}
+	.inner-page-wrp .main-banner .banner-dt img{max-width: 50%;}
+
+	.inner-page-wrp .tabs-wrp .nav-tabs{width: 100%;}
+	.inner-page-wrp .tabs-wrp .tab-content p{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box h3{font-size: 18px;margin: 5px auto 0;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .web-day-dt h4{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .day-btn a{font-size: 14px;padding: 5px 0;}
+	.box-last-wrp h5{font-size: 11px;}
+	.box-last-wrp strong {font-size: 12px;}
+
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd .pgrs-block p{font-size: 11px;}
+	.inner-page-wrp .main-banner{padding: 150px 0 100px;}
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd{width: 48%;}
+	.inner-page-wrp ul.navbar-nav.ml-auto.py-4.py-md-0 {width: 477px;}
+	.navbar-brand img{max-width: 80%;}
+
+
+	/* **** Index **** */
+	.main-banner .banner-block .banner-img img{max-width: 70%;}
+	.exchange-wrp .exchange-dt h2{font-size: 28px;}
+	.overview-wrp .title h2{font-size: 28px;}
+	.overview-wrp .view-block{min-height: auto;}
+	.main-banner .banner-block .banner-dt h3{font-size: 18px;}
+	.main-banner .banner-block .banner-dt p{font-size: 16px;}
+
+	.transformer-wrp .transformer-block .transformer-dt h1{font-size: 36px;}
+	.transformer-wrp .transformer-block .transformer-dt p{font-size: 16px;}
+	.transformer-wrp{    height: auto;padding: 200px 0 150px;background-size: cover;margin-bottom: 0;}
+
+	.contracts-wrp .title h2 {font-size: 16px;}
+	ul.navbar-nav.ml-auto.py-4.py-md-0{width: 400px;}
+	.overview-wrp:after{display: none;}
+	.contracts-wrp .view-dt h3{font-size: 20px;}
+	.contracts-wrp .view-block{min-height: 355px;}
+	.restabouter{flex-direction: column;}
+	.btn-orange{margin:10px auto 0}
+
+}
+
+@media(min-width:576px) and (max-width:767px){
+	#my_video_1{transform: scale(0.6);transform-origin: center;}
+	.vid-outer{flex-direction: column;}
+	.vid-tag-outer{margin-left: 0;width: 100%;}
+	.inner-page-wrp .main-banner .banner-dt img{width: 100%;}
+	.sidebar{display: none;}
+	.inner-center-part{padding: 200px 50px 50px;}
+	.top-bar{padding: 15px;}
+
+	.gro-dt h2{font-size: 14px;}
+	.gro-dt h2 span{font-size: 11px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+
+	.cloknm h3{font-size: 24px;}
+	.clock-ic i{height: 50px;width: 50px;line-height: 50px;font-size: 20px;}
+	.cloknm p{font-size: 12px;}
+	.enter-cnt .cnt-btn{font-size: 12px;}
+
+	.cent-tab-hed ul li a{padding: 20px 7px;font-size: 12px;}
+	.cent-tab-hed ul li a:after{height: 4px;}
+	.contn-pt-one{padding: 20px;}
+
+	.join-block{width: 100%;}
+	.join-block img{width: 60px;margin: 0 auto 20px;}
+	.join-block h3{font-size: 18px;}
+	.join-block p{font-size: 13px;}
+	.join-block .btn-group .btn-join{padding: 10px 7px;}
+	.shpimgs img{width: 200px;}
+
+	#myModal .modal-content{width: 500px;}
+	#myModal .modal-body .iparea label{font-size: 12px;top: -10px;}
+	#myModal .modal-body .iparea .form-control{height: 30px;font-size: 13px;}
+
+	#myModal .modal-body .mld-right-wrp .table td {padding: 26px 0;}
+	#myModal .modal-body .iparea .ipic{top: 22px;}
+	#myModal .modal-body .iparea .ipic i{font-size: 16px;}
+	#myModal .modal-body .iparea .slt-wrp{width: 80px;top: 15px;}
+	#myModal .modal-body .iparea .slt-wrp .form-control{height: 30px;padding: 0 10px;font-size: 13px;}
+
+	#myModal .modal-body h2{font-size: 20px;}
+	#myModal .modal-body p{font-size: 14px;}
+	#myModal .modal-body .iparea{padding:15px;}
+	#myModal .modal-body .mlddt-block label{font-size: 14px;}
+	#myModal .modal-body .mlddt-block p{font-size: 13px;}
+	.mld-dt p{font-size: 13px !important;}
+	#myModal .modal-body .mlddt-block .mldbtn a{padding: 10px 0;margin: 15px 0;}
+
+	#myModal .modal-body .mld-right-wrp .table td{padding: 10px 0;font-size: 14px;}
+	#myModal .modal-body .mld-right-wrp .table tr:last-child td{padding: 10px 0;}
+	#myModal .modal-body .mlddt-block label span{padding-left: 4px;}
+
+	/* **** reservations **** */
+	.navbar-light .navbar-nav .nav-link{padding: 10px 1px;font-size: 12px;}
+	.navbar-light .navbar-nav .nav-link.btn-approve{font-size: 10px;}
+
+	.inner-page-wrp .main-banner .banner-dt{width: 100%;}
+	.main-banner .banner-block .banner-dt h1{font-size: 28px;}
+	.inner-page-wrp .main-banner .banner-dt p{font-size: 15px;}
+	.inner-page-wrp .main-banner .banner-dt img{max-width: 50%;}
+	.inner-page-wrp .tabs-wrp .nav-tabs .nav-link{font-size: 13px;}
+
+	.inner-page-wrp .tabs-wrp .nav-tabs{width: 100%;padding: 0;}
+	.inner-page-wrp .tabs-wrp .tab-content p{font-size: 12px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box h3{font-size: 18px;margin: 5px auto 0;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .web-day-dt h4{font-size: 15px;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box .day-btn a{font-size: 14px;padding: 5px 0;}
+	.box-last-wrp h5{font-size: 11px;}
+	.box-last-wrp strong {font-size: 12px;}
+
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd .pgrs-block p{font-size: 11px;}
+	.inner-page-wrp .main-banner{padding: 150px 0 100px;}
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd{width: 100%;}
+
+	/* **** Index **** */
+	.main-banner{height: auto;padding: 100px 0 150px;}
+	/*.banner-block .banner-dt {padding: 170px 0 0; height: auto;}*/
+	.main-banner .banner-block .banner-dt h1{margin: 0 auto;display: table;font-size: 24px;}
+	.main-banner .banner-block .banner-dt h3{font-size: 18px;margin: 15px auto 0;display: table;}
+	.main-banner .banner-block .banner-dt p{font-size: 16px;text-align: center;}
+	.main-banner .banner-block .banner-dt .btn-approve{margin: 15px auto;display: table;}
+
+	.exchange-wrp .exchange-block{width: 100%;}
+	.exchange-wrp{padding: 150px 0 0;background-size: cover;}
+	.exchange-wrp .exchange-dt h2{font-size: 26px;}
+	.exchange-wrp .exchange-block .exchange-box .btn-secondary img{height: 25px;width: 25px;}
+
+	.overview-wrp{padding: 100px 0 0;}
+	.overview-wrp:after{display: none;}
+
+	.contracts-wrp .title h2{font-size: 26px;}
+	.contracts-wrp .title p{font-size: 16px;}
+	.contracts-wrp .view-block{height: auto;padding: 40px 10px 20px;}
+	.contracts-wrp .view-dt h3{font-size: 20px}
+	.overview-wrp .title h2{font-size: 26px;}
+
+	.transformer-wrp{height: auto;padding: 100px 0 150px;margin:50px 0 0;background-size: cover;}
+	.transformer-wrp .transformer-block .transformer-dt h1{font-size: 26px;text-align: center;}
+	.transformer-wrp .transformer-block .transformer-dt p{font-size: 16px;text-align: center;}
+	.transformer-wrp .transformer-block .transformer-btn ul li{margin: 0 auto;display: table;}
+	.restabouter{flex-direction: column;}
+	.btn-orange{margin:10px auto 0}
+
+}
+
+@media(min-width:448px) and (max-width:575px){
+	#my_video_1{
+		transform-origin: center;
+		width: 370px !important;
+		height: 210px !important;
+		margin: auto;
+	}
+	.vid-outer{flex-direction: column;}
+	.vid-tag-outer{margin-left: 0;width: 90%;}
+	.inner-page-wrp .main-banner .banner-dt img{width: 100%;margin-bottom: 30px !important;}
+	/*.sidebar{display: none;}*/
+	.inner-center-part{padding:30px 15px;}
+	.top-bar{padding: 30px 15px 15px;position: relative;}
+	.top-bar .row{display: flex;}
+
+	.gro-dt h2{font-size: 13px;}
+	.gro-dt h2 span{font-size: 10px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+
+	.inner-update .col-md-6.col-sm-6.col-lg-3 {float: left;width: 50%;}
+
+	.cloknm h3{font-size: 24px;}
+	.clock-ic i{height: 50px;width: 50px;line-height: 50px;font-size: 20px;}
+	.cloknm p{font-size: 12px;}
+	.enter-cnt .cnt-btn{font-size: 12px;float: none;margin: 15px 0 0;}
+	
+
+	.update-box{display: block;}
+	.cent-tab-hed ul li a{padding: 20px 7px;font-size: 12px;}
+	.cent-tab-hed ul li a:after{height: 4px;}
+	.contn-pt-one{padding: 20px;}
+	.join-block .btn-group{display: block;}
+
+	.join-block{width: 100%;}
+	.join-block img{width: 60px;margin: 0 auto 20px;}
+	.join-block h3{font-size: 18px;}
+	.join-block p{font-size: 13px;}
+	.join-block .btn-group .btn-join{padding: 10px 7px;margin: 15px 0 0;width: 230px;}
+	.shpimgs img{width: 200px;}
+
+	#myModal .modal-content{width: 350px;}
+	#myModal .modal-body .iparea label{font-size: 12px;top: -10px;}
+	#myModal .modal-body .iparea .form-control{height: 30px;font-size: 13px;}
+
+	#myModal .modal-body .mld-right-wrp .table td {padding: 26px 0;}
+	#myModal .modal-body .iparea .ipic{top: 22px;}
+	#myModal .modal-body .iparea .ipic i{font-size: 16px;}
+	#myModal .modal-body .iparea .slt-wrp{width: 80px;top: 15px;}
+	#myModal .modal-body .iparea .slt-wrp .form-control{height: 30px;padding: 0 10px;font-size: 13px;}
+
+	#myModal .modal-body h2{font-size: 20px;}
+	#myModal .modal-body p{font-size: 14px;}
+	#myModal .modal-body .iparea{padding:15px;}
+	#myModal .modal-body .mlddt-block label{font-size: 14px;}
+	#myModal .modal-body .mlddt-block p{font-size: 13px;}
+	.mld-dt p{font-size: 13px !important;}
+	#myModal .modal-body .mlddt-block .mldbtn a{padding: 10px 0;margin: 15px 0;}
+
+	#myModal .modal-body .mld-right-wrp .table td{padding: 10px 0;font-size: 14px;}
+	#myModal .modal-body .mld-right-wrp .table tr:last-child td{padding: 10px 0;}
+	#myModal .modal-body .mlddt-block label span{padding-left: 4px;}
+
+	.bar-ic{position: absolute;right: 0;top: -237px;}
+	.bar-ic i{border-bottom: 1px solid rgba(112,112,112,0.50);padding: 12px;}
+	
+	.Sidebar-wrp{left: -100%;} 
+	.expand-menu-open {left: 0;}
+	.gro-dt h2 label{padding: 2px 5px;}
+
+	/* **** reservations **** */
+	.navbar-light .navbar-nav .nav-link{padding: 10px 1px;font-size: 12px;}
+	.navbar-light .navbar-nav .nav-link.btn-approve{font-size: 10px;}
+
+	.inner-page-wrp .main-banner .banner-dt{width: 100%;}
+	.main-banner .banner-block .banner-dt h1{font-size: 28px;}
+	.inner-page-wrp .main-banner .banner-dt p{font-size: 15px;}
+	.inner-page-wrp .main-banner .banner-dt img{max-width: 50%;}
+	.inner-page-wrp .tabs-wrp .nav-tabs .nav-link{font-size: 13px;}
+
+	.inner-page-wrp .tabs-wrp .nav-tabs{width: 100%;padding: 0;}
+	.web-box .row .col-md-6{float: left;width: 50%;}
+	.box-last-wrp .row .col-sm-6{float: left;width: 50%;}
+	/*.inner-page-wrp .tabs-wrp .tab-content p{font-size: 12px;}*/
+	/*.inner-page-wrp .tabs-wrp .tab-content .web-box h3{font-size: 18px;margin: 5px auto 0;}*/
+	/*.inner-page-wrp .tabs-wrp .tab-content .web-box .web-day-dt h4{font-size: 15px;}*/
+	/*.inner-page-wrp .tabs-wrp .tab-content .web-box .day-btn a{font-size: 14px;padding: 5px 0;}*/
+	.inner-page-wrp .tabs-wrp .tab-content .web-box{width: 75%;}
+	.box-last-wrp h5{font-size: 11px;}
+	.box-last-wrp strong {font-size: 12px;}
+
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd .pgrs-block p{font-size: 11px;}
+	.inner-page-wrp .main-banner{padding: 150px 0 100px;}
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd{width: 75%;}
+
+
+	/* **** Index **** */
+	.main-banner{height: auto;padding: 100px 0 150px;}
+	/*.banner-block .banner-dt {padding: 170px 0 0; height: auto;}*/
+	.main-banner .banner-block .banner-dt h1{margin: 0 auto;display: table;font-size: 24px;}
+	.main-banner .banner-block .banner-dt h3{font-size: 18px;margin: 15px auto 0;display: table;}
+	.main-banner .banner-block .banner-dt p{font-size: 16px;text-align: center;}
+	.main-banner .banner-block .banner-dt .btn-approve{margin: 15px auto;display: table;}
+
+	.exchange-wrp .exchange-block{width: 100%;}
+	.exchange-wrp{padding: 150px 0 0;background-size: cover;}
+	.exchange-wrp .exchange-dt h2{font-size: 26px;}
+	.exchange-wrp .exchange-block .exchange-box .btn-secondary img{height: 25px;width: 25px;}
+
+	.overview-wrp{padding: 100px 0 0;}
+	.overview-wrp:after{display: none;}
+
+	.contracts-wrp .title h2{font-size: 26px;}
+	.contracts-wrp .title p{font-size: 16px;}
+	.contracts-wrp .view-block{height: auto;padding: 40px 10px 20px;}
+	.contracts-wrp .view-dt h3{font-size: 20px}
+	.overview-wrp .title h2{font-size: 26px;}
+
+	.transformer-wrp{height: auto;padding: 100px 0 150px;margin:50px 0 0;background-size: cover;}
+	.transformer-wrp .transformer-block .transformer-dt h1{font-size: 26px;text-align: center;}
+	.transformer-wrp .transformer-block .transformer-dt p{font-size: 16px;text-align: center;}
+	.transformer-wrp .transformer-block .transformer-btn ul li{margin: 0 auto;display: table;}
+
+	#videoModal .modal-dialog{width: -webkit-fill-available;}
+	.start-header{background: rgba(0,0,0,.8);}
+	.navbar-light .navbar-toggler{position: initial;}
+	.restabouter{flex-direction: column;}
+	.btn-orange{margin:10px auto 0}
+}
+
+@media(max-width:447px){
+	#my_video_1{
+		transform-origin: center;
+		width: 300px !important;
+		height: 170px !important;
+		margin: auto;
+	}
+	.vid-outer{flex-direction: column;}
+	.vid-tag-outer{margin-left: 0;width: 90%;}
+	.inner-page-wrp .main-banner .banner-dt img{width: 100%;margin-bottom: 30px !important;}
+	/*.sidebar{display: none;}*/
+	.inner-center-part{padding:30px 15px;}
+	.top-bar{padding: 30px 15px 15px;position: relative;}
+	.top-bar .row{display: flex;}
+
+	.gro-dt h2{font-size: 13px;}
+	.gro-dt h2 span{font-size: 10px;}
+	.gro-ic img{width: 26px;margin: 20px 15px 0 0;}
+	.gro-dt h2 label{display: table;}
+
+	.inner-update .col-md-6.col-sm-6.col-lg-3 {float: left;width: 50%;}
+
+	.cloknm h3{font-size: 24px;}
+	.clock-ic i{height: 50px;width: 50px;line-height: 50px;font-size: 20px;}
+	.cloknm p{font-size: 12px;}
+	.enter-cnt .cnt-btn{font-size: 12px;float: none;margin: 15px 0 0;}
+	
+
+	.update-box{display: block;}
+	.cent-tab-hed ul li a{padding: 20px 7px;font-size: 12px;}
+	.cent-tab-hed ul li a:after{height: 4px;}
+	.contn-pt-one{padding: 20px;}
+	.join-block .btn-group{display: block;}
+
+	.join-block{width: 100%;}
+	.join-block img{width: 60px;margin: 0 auto 20px;}
+	.join-block h3{font-size: 18px;}
+	.join-block p{font-size: 13px;}
+	.join-block .btn-group .btn-join{padding: 10px 7px;margin: 15px 0 0;width: 230px;}
+	.shpimgs img{width: 200px;}
+
+	#myModal .modal-content{width: 280px;}
+	#myModal .modal-body .iparea label{font-size: 12px;top: -10px;}
+	#myModal .modal-body .iparea .form-control{height: 30px;font-size: 13px;}
+
+	#myModal .modal-body .mld-right-wrp .table td {padding: 26px 0;}
+	#myModal .modal-body .iparea .ipic{top: 22px;}
+	#myModal .modal-body .iparea .ipic i{font-size: 16px;}
+	#myModal .modal-body .iparea .slt-wrp{width: 80px;top: 15px;}
+	#myModal .modal-body .iparea .slt-wrp .form-control{height: 30px;padding: 0 10px;font-size: 13px;}
+
+	#myModal .modal-body h2{font-size: 20px;}
+	#myModal .modal-body p{font-size: 14px;}
+	#myModal .modal-body .iparea{padding:15px;}
+	#myModal .modal-body .mlddt-block label{font-size: 14px;}
+	#myModal .modal-body .mlddt-block p{font-size: 13px;}
+	.mld-dt p{font-size: 13px !important;}
+	#myModal .modal-body .mlddt-block .mldbtn a{padding: 10px 0;margin: 15px 0;}
+
+	#myModal .modal-body .mld-right-wrp .table td{padding: 10px 0;font-size: 14px;}
+	#myModal .modal-body .mld-right-wrp .table tr:last-child td{padding: 10px 0;}
+	#myModal .modal-body .mlddt-block label span{padding-left: 4px;}
+
+	.bar-ic{position: absolute;right: 0;top: -237px;}
+	.bar-ic i{border-bottom: 1px solid rgba(112,112,112,0.50);padding: 12px;}
+	
+	.Sidebar-wrp{left: -100%;} 
+	.expand-menu-open {left: 0;}
+	.gro-dt h2 label{padding: 2px 5px;}
+
+	/* **** reservations **** */
+	.navbar-light .navbar-nav .nav-link{padding: 10px 1px;font-size: 12px;}
+	.navbar-light .navbar-nav .nav-link.btn-approve{font-size: 10px;}
+
+	.inner-page-wrp .main-banner .banner-dt{width: 100%;}
+	.inner-page-wrp .main-banner .banner-block .banner-dt h1{font-size: 28px;}
+	.inner-page-wrp .main-banner .banner-dt p{font-size: 15px;}
+	.inner-page-wrp .main-banner .banner-dt img{max-width: 50%;}
+	.inner-page-wrp .tabs-wrp .nav-tabs .nav-link{font-size: 13px;}
+
+	.inner-page-wrp .tabs-wrp .nav-tabs{width: 100%;padding: 0;}
+	.web-box .row .col-md-6{float: left;width: 50%;}
+	.box-last-wrp .row .col-sm-6{float: left;width: 50%;}
+	.inner-page-wrp .tabs-wrp .tab-content .web-box{width: 100%;}
+	.box-last-wrp h5{font-size: 11px;}
+	.box-last-wrp strong {font-size: 12px;}
+
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd .pgrs-block p{font-size: 11px;}
+	.inner-page-wrp .main-banner{padding: 150px 0 100px;}
+	.inner-page-wrp .tabs-wrp .tab-content .dark-brd{width: 100%;}
+	.inner-page-wrp .tabs-wrp .nav{display: block;}
+	.inner-page-wrp .tabs-wrp .tab-content p{text-align: center;}
+
+
+	/* **** Index **** */
+	.main-banner{height: auto;padding: 100px 0 150px;}
+	.main-banner .banner-block .banner-dt h1{margin: 0 auto;display: table;font-size: 24px;}
+	.main-banner .banner-block .banner-dt h3{font-size: 18px;margin: 15px auto 0;display: table;}
+	.main-banner .banner-block .banner-dt p{font-size: 16px;text-align: center;}
+	.main-banner .banner-block .banner-dt .btn-approve{margin: 15px auto;display: table;}
+
+	.exchange-wrp .exchange-block{width: 100%;}
+	.exchange-wrp{padding: 150px 0 0;background-size: cover;}
+	.exchange-wrp .exchange-dt h2{font-size: 26px;}
+	.exchange-wrp .exchange-block .exchange-box .btn-secondary img{max-width: 15%;}
+
+	.overview-wrp{padding: 100px 0 0;}
+	.overview-wrp:after{display: none;}
+
+	.contracts-wrp .title h2{font-size: 26px;}
+	.contracts-wrp .title p{font-size: 16px;}
+	.contracts-wrp .view-block{height: auto;padding: 40px 10px 20px;}
+	.contracts-wrp .view-dt h3{font-size: 20px}
+	.overview-wrp .title h2{font-size: 26px;}
+
+	.transformer-wrp{height: auto;padding: 100px 0 150px;margin:50px 0 0;background-size: cover;}
+	.transformer-wrp .transformer-block .transformer-dt h1{font-size: 26px;text-align: center;}
+	.transformer-wrp .transformer-block .transformer-dt p{font-size: 16px;text-align: center;}
+	.transformer-wrp .transformer-block .transformer-btn ul li{margin: 0 auto;display: table;}
+
+	.navbar-brand{padding: 14px 0;}
+	.navbar-brand img{max-width: 100%}
+	#videoModal .modal-dialog{width: -webkit-fill-available;}
+	.start-header{background: rgba(0,0,0,.85);}
+	.navbar-light .navbar-toggler{position: initial;border-color:transparent;background: transparent;}
+
+	.navbar{padding-top: .5rem;padding-bottom: .5rem}
+	.banner-block{margin-top: 36px}
+	.restabouter{flex-direction: column;}
+	.btn-orange{margin:10px auto 0}
+}

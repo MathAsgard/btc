@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Italic.woff2') format('woff2'),
+        url('../fonts/ProductSans-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Medium.woff2') format('woff2'),
+        url('../fonts/ProductSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Light.woff2') format('woff2'),
+        url('../fonts/ProductSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Bold.woff2') format('woff2'),
+        url('../fonts/ProductSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Thin.woff2') format('woff2'),
+        url('../fonts/ProductSans-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Regular.woff2') format('woff2'),
+        url('../fonts/ProductSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('../fonts/ProductSans-Black.woff2') format('woff2'),
+        url('../fonts/ProductSans-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+*{
+  font-family: 'Product Sans';
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    list-style:none;
+}
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/*Comman Css*/
+a:hover,
+a:focus,
+a:active{
+  text-decoration: none;
+}
+ol, ul{
+  margin: 0;
+  padding: 0;
+}
+img{
+  display: block;
+}
+body{
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'Exo';
+  color: #000;
+  text-decoration: none;
+  scroll-behavior: smooth;
+
+}
+
+
+.btn-main{
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff !important;
+  display: table;
+  min-width: 207px;
+  padding: 12px 20px;
+  text-align: center;
+  position: relative;
+  background-color: #D45118 !important;
+  transition: all 0.4s ease;
+  border-radius: 12px;
+}
+.btn-main:focus,
+.btn-main:hover{
+  color: #fff;
+  outline: none;
+  border-color: #333;
+  background-color: #333;
+}
+
+
+.banner-form{
+  width: 100%;
+  display: block;
+  padding: 40px;
+  position: relative;
+  border-radius: 10px;
+ color: #fff;
+  box-shadow: 25px 0 50px rgba(0,0,0,0.25);
+}
+.banner-form h4{
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0 0 40px;
+}
+
+
+.banner-form .form-group select{
+   background-position: calc(100% - 3px) 50%;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; 
+          background-image: url("../images/iconfinder-icon.svg");
+}
+.form-icon{
+  position: absolute;
+  top: -54px;
+  right: 85px;
+  width: 100px;
+}
+.form-icon img{
+  width: 100%;
+}
+
+.banner-form .form-group-blk{
+  width: 100%;
+  display: block;
+}
+.banner-form label{
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+}
+.banner-form .form-group{
+  position: relative;
+  width: 100%;
+  display: block;
+  margin-bottom: 35px;
+}
+.banner-form input::placeholder{
+  color: #fff;
+}
+.banner-form .form-control{
+  width: 100%;
+  display: block;
+  font-size: 15px;
+  color: #000;
+  font-weight: 500;
+  height: 43px;
+  padding-left: 95px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.banner-form .form-control:focus,
+.banner-form .form-control:hover{
+  outline: none;
+  box-shadow: none;
+}
+.banner-form .btn-main{
+  width: 100%;
+  box-shadow: none;
+  border: none;
+}
+.banner-form .btn-main:hover{
+  outline: none;
+}
+.banner-form select.form-control{
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px 0px 0 15px;
+  padding-left: 10px;
+  padding-right: 30px;
+  border-right: 2px solid #1e213a;
+}
+/* End Banner */
+
+
+
+
+.form-bottom-blk,
+.form-content-blk{
+  width: 100%;
+  display: table;
+  margin-bottom: 40px;
+}
+.form-content-blk h5{
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+.form-bottom-blk p,
+.form-content-blk p{
+  font-size: 16px;
+  font-weight: normal;
+  color: #84899f;
+  margin-bottom: 0;
+}
+.form-bottom-blk p span,
+.form-content-blk p span{
+  color: #fff;
+}
+.form-bottom-left,
+.from-content-left{
+  float: left;
+  width: 50%;
+}
+.form-bottom-right,
+.from-content-right{
+  float: left;
+  width: 50%;
+  text-align: right;
+}
+
+.form-bottom-blk{
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+
+.form-group-blk{
+  position: relative;
+}
+
+
+
+
+#exchs2{display: none;}
+
+
+.form-grp-send{position: relative;}
+.form-grp-send-min{color: red;position: absolute;bottom: -26px;right: 10px}
+
+
+/** exchange info page **/
+.exchangeformsteps select{width: 76px !important}
+.winbackward {min-width: unset;margin-right: 10px}
